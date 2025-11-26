@@ -20,7 +20,7 @@ export type MenusPluginConfig = {
   linkableCollections?: string[]
 
   /**
-   * Enable localization for menu fields (title, url)
+   * Enable localization for menu fields (title, url, label)
    */
   localized?: boolean
 }

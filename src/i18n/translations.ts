@@ -30,6 +30,13 @@ export const labels = {
       fr: 'Sous-menu',
       nl: 'Submenu',
     },
+    itemFallback: {
+      de: 'Menüpunkt',
+      en: 'Menu Item',
+      es: 'Elemento de menú',
+      fr: 'Élément de menu',
+      nl: 'Menu-item',
+    },
     items: {
       de: 'Menüpunkte',
       en: 'Menu Items',

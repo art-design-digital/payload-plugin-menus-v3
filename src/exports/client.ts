@@ -1,1 +1,1 @@
-export { BeforeDashboardClient } from '../components/BeforeDashboardClient.js'
+export { MenuItemRowLabelClient } from '../components/MenuItemRowLabel.js'

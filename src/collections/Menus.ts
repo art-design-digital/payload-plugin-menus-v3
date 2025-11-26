@@ -75,6 +75,9 @@ const createMenuItemFields = (
       name: 'children',
       type: 'array',
       admin: {
+        components: {
+          RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabel',
+        },
         initCollapsed: true,
       },
       fields: createMenuItemFields(config, currentLevel + 1, maxLevels),
@@ -93,6 +96,9 @@ export const createMenusCollection = (config: MenusPluginConfig): CollectionConf
     name: 'items',
     type: 'array',
     admin: {
+      components: {
+        RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabel',
+      },
       initCollapsed: true,
     },
     fields: createMenuItemFields(config, 1, levels),

@@ -11,6 +11,7 @@ const createMenuItemFields = (
 ): Field[] => {
   const { linkableCollections = [], localized = false } = config
   const canHaveChildren = currentLevel < maxLevels
+  const isChildLevel = currentLevel > 1
 
   const linkTypeOptions: OptionObject[] = [
     {
@@ -31,7 +32,19 @@ const createMenuItemFields = (
     })
   }
 
-  const fields: Field[] = [
+  const fields: Field[] = []
+
+  // Add marginTop checkbox only for child items (not top-level)
+  if (isChildLevel) {
+    fields.push({
+      name: 'marginTop',
+      type: 'checkbox',
+      defaultValue: false,
+      label: labels.fields.marginTop,
+    })
+  }
+
+  fields.push(
     {
       name: 'label',
       type: 'text',
@@ -58,7 +71,7 @@ const createMenuItemFields = (
       label: labels.fields.url,
       localized,
     },
-  ]
+  )
 
   if (linkableCollections.length > 0) {
     fields.push(

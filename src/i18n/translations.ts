@@ -100,6 +100,13 @@ export const labels = {
       fr: 'Interne',
       nl: 'Intern',
     },
+    marginTop: {
+      de: 'Abstand zum vorherigen Menüpunkt',
+      en: 'Spacing to previous item',
+      es: 'Espacio al elemento anterior',
+      fr: 'Espacement avec l\'élément précédent',
+      nl: 'Afstand tot vorig item',
+    },
     openInNewTab: {
       de: 'In neuem Tab öffnen',
       en: 'Open in new tab',

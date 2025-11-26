@@ -65,6 +65,13 @@ export const labels = {
       fr: 'Type de lien',
       nl: 'Link type',
     },
+    linkTypeChildren: {
+      de: 'Mit Kindelementen',
+      en: 'With Children',
+      es: 'Con hijos',
+      fr: 'Avec enfants',
+      nl: 'Met kinderen',
+    },
     linkTypeExternal: {
       de: 'Extern',
       en: 'External',

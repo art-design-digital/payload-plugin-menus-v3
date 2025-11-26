@@ -1,4 +1,4 @@
-import type { ArrayField, CollectionConfig, Field } from 'payload'
+import type { ArrayField, CollectionConfig, Field, OptionObject } from 'payload'
 
 import type { MenusPluginConfig } from '../types.js'
 
@@ -10,6 +10,26 @@ const createMenuItemFields = (
   maxLevels: number,
 ): Field[] => {
   const { linkableCollections = [], localized = false } = config
+  const canHaveChildren = currentLevel < maxLevels
+
+  const linkTypeOptions: OptionObject[] = [
+    {
+      label: labels.fields.linkTypeInternal,
+      value: 'internal',
+    },
+    {
+      label: labels.fields.linkTypeExternal,
+      value: 'external',
+    },
+  ]
+
+  // Only add "children" option if we can have children at this level
+  if (canHaveChildren) {
+    linkTypeOptions.push({
+      label: labels.fields.linkTypeChildren,
+      value: 'children',
+    })
+  }
 
   const fields: Field[] = [
     {
@@ -27,16 +47,7 @@ const createMenuItemFields = (
       },
       defaultValue: 'internal',
       label: labels.fields.linkType,
-      options: [
-        {
-          label: labels.fields.linkTypeInternal,
-          value: 'internal',
-        },
-        {
-          label: labels.fields.linkTypeExternal,
-          value: 'external',
-        },
-      ],
+      options: linkTypeOptions,
     },
     {
       name: 'url',
@@ -75,12 +86,15 @@ const createMenuItemFields = (
   fields.push({
     name: 'openInNewTab',
     type: 'checkbox',
+    admin: {
+      condition: (_, siblingData) => siblingData?.linkType !== 'children',
+    },
     defaultValue: false,
     label: labels.fields.openInNewTab,
   })
 
   // Add children array if we haven't reached max depth
-  if (currentLevel < maxLevels) {
+  if (canHaveChildren) {
     const childrenField: ArrayField = {
       name: 'children',
       type: 'array',
@@ -88,6 +102,7 @@ const createMenuItemFields = (
         components: {
           RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabelClient',
         },
+        condition: (_, siblingData) => siblingData?.linkType === 'children',
         initCollapsed: true,
       },
       fields: createMenuItemFields(config, currentLevel + 1, maxLevels),

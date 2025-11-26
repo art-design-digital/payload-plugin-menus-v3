@@ -53,6 +53,11 @@ const createMenuItemFields = (
 
   // Add children array if we haven't reached max depth
   if (canHaveChildren) {
+    type TranslationKey = keyof typeof labels.fields.childrenRequired
+    type MenuItemData = {
+      linkType?: 'children' | 'external' | 'internal'
+    }
+
     const childrenField: ArrayField = {
       name: 'children',
       type: 'array',
@@ -68,6 +73,14 @@ const createMenuItemFields = (
       labels: {
         plural: labels.fields.children,
         singular: labels.fields.child,
+      },
+      validate: (value, { req, siblingData }) => {
+        const data = siblingData as MenuItemData
+        if (data?.linkType === 'children' && (!value || value.length === 0)) {
+          const lang = ((req?.i18n?.language || req?.locale) as TranslationKey) || 'en'
+          return labels.fields.childrenRequired[lang] || labels.fields.childrenRequired.en
+        }
+        return true
       },
     }
     fields.push(childrenField)

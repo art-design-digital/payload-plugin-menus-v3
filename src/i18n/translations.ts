@@ -83,6 +83,13 @@ export const labels = {
       fr: 'Enfants',
       nl: 'Kinderen',
     },
+    childrenRequired: {
+      de: 'Bitte fügen Sie mindestens ein Kindelement hinzu',
+      en: 'Please add at least one child item',
+      es: 'Por favor agregue al menos un elemento hijo',
+      fr: 'Veuillez ajouter au moins un élément enfant',
+      nl: 'Voeg ten minste één kindelement toe',
+    },
     icon: {
       de: 'Icon',
       en: 'Icon',
@@ -167,6 +174,13 @@ export const labels = {
       fr: 'Référence',
       nl: 'Referentie',
     },
+    referenceRequired: {
+      de: 'Bitte wählen Sie eine Referenz aus',
+      en: 'Please select a reference',
+      es: 'Por favor seleccione una referencia',
+      fr: 'Veuillez sélectionner une référence',
+      nl: 'Selecteer een referentie',
+    },
     title: {
       de: 'Titel',
       en: 'Title',
@@ -180,6 +194,20 @@ export const labels = {
       es: 'URL',
       fr: 'URL',
       nl: 'URL',
+    },
+    urlInvalid: {
+      de: 'URL muss mit https:// beginnen',
+      en: 'URL must start with https://',
+      es: 'La URL debe comenzar con https://',
+      fr: "L'URL doit commencer par https://",
+      nl: 'URL moet beginnen met https://',
+    },
+    urlRequired: {
+      de: 'Bitte geben Sie eine URL ein',
+      en: 'Please enter a URL',
+      es: 'Por favor ingrese una URL',
+      fr: 'Veuillez entrer une URL',
+      nl: 'Voer een URL in',
     },
   },
 } as const

@@ -90,7 +90,7 @@ const createMenuItemFields = (
 }
 
 export const createMenusCollection = (config: MenusPluginConfig): CollectionConfig => {
-  const { adminGroup, levels = 2, localized = false } = config
+  const { access, adminGroup, levels = 2, localized = false } = config
 
   const itemsField: ArrayField = {
     name: 'items',
@@ -113,6 +113,7 @@ export const createMenusCollection = (config: MenusPluginConfig): CollectionConf
     slug: 'menus',
     access: {
       read: () => true,
+      ...access,
     },
     admin: {
       description: labels.collection.description,

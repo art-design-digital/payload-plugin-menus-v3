@@ -1,6 +1,14 @@
+import type { CollectionConfig } from 'payload'
+
 import type { IconPackType } from './fields/index.js'
 
 export type MenusPluginConfig = {
+  /**
+   * Access control for the Menus collection
+   * Override default access settings
+   */
+  access?: CollectionConfig['access']
+
   /**
    * Admin group name for the Menus collection
    */

@@ -10,9 +10,9 @@ export type MenusPluginConfig = {
   disabled?: boolean
 
   /**
-   * Maximum nesting depth for menu items (default: 3)
+   * Maximum nesting depth for menu items (1-3, default: 2)
    */
-  levels?: number
+  levels?: 1 | 2 | 3
 
   /**
    * Collections that can be linked in menu items

@@ -100,7 +100,7 @@ const createMenuItemFields = (
 }
 
 export const createMenusCollection = (config: MenusPluginConfig): CollectionConfig => {
-  const { adminGroup, levels = 3, localized = false } = config
+  const { adminGroup, levels = 2, localized = false } = config
 
   const itemsField: ArrayField = {
     name: 'items',

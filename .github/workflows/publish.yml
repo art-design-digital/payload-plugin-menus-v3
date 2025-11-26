@@ -17,14 +17,14 @@ jobs:
               with:
                   node-version: 20
                   registry-url: https://registry.npmjs.org
-            - name: 📦 install plugin
-              uses: borales/actions-yarn@v5.0.0
+            - name: 📦 setup pnpm
+              uses: pnpm/action-setup@v4
               with:
-                  cmd: install
+                  version: 9
+            - name: 📦 install dependencies
+              run: pnpm install
             - name: 📦 build plugin
-              uses: borales/actions-yarn@v5.0.0
-              with:
-                  cmd: build
+              run: pnpm build
             - name: 🚀 publish
               run: npm publish --access public
               env:

@@ -5,6 +5,7 @@ import type { MenusPluginConfig } from '../types.js'
 import {
   anchorField,
   customURLField,
+  iconField,
   labelField,
   linkTypeField,
   marginTopField,
@@ -19,7 +20,12 @@ const createMenuItemFields = (
   currentLevel: number,
   maxLevels: number,
 ): Field[] => {
-  const { linkableCollections = [], localized = false } = config
+  const {
+    allowIcons = false,
+    iconPack = 'Phosphor Icons',
+    linkableCollections = [],
+    localized = false,
+  } = config
   const canHaveChildren = currentLevel < maxLevels
   const isChildLevel = currentLevel > 1
 
@@ -30,7 +36,14 @@ const createMenuItemFields = (
     fields.push(marginTopField)
   }
 
-  fields.push(labelField(localized), linkTypeField(canHaveChildren), customURLField(localized))
+  fields.push(labelField(localized))
+
+  // Add icon field only if allowIcons is enabled
+  if (allowIcons) {
+    fields.push(iconField(iconPack))
+  }
+
+  fields.push(linkTypeField(canHaveChildren), customURLField(localized))
 
   if (linkableCollections.length > 0) {
     fields.push(referenceField(linkableCollections), anchorField)

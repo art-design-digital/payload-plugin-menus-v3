@@ -1,4 +1,43 @@
 export const labels = {
+  client: {
+    iconPicker: {
+      clear: {
+        de: 'Löschen',
+        en: 'Clear',
+        es: 'Borrar',
+        fr: 'Effacer',
+        nl: 'Wissen',
+      },
+      loadingIcons: {
+        de: 'Icons werden geladen...',
+        en: 'Loading icons...',
+        es: 'Cargando iconos...',
+        fr: 'Chargement des icônes...',
+        nl: 'Iconen laden...',
+      },
+      noIconSelected: {
+        de: 'Kein Icon ausgewählt',
+        en: 'No icon selected',
+        es: 'Ningún icono seleccionado',
+        fr: 'Aucune icône sélectionnée',
+        nl: 'Geen icoon geselecteerd',
+      },
+      noResults: {
+        de: 'Keine Icons gefunden für',
+        en: 'No icons found for',
+        es: 'No se encontraron iconos para',
+        fr: 'Aucune icône trouvée pour',
+        nl: 'Geen iconen gevonden voor',
+      },
+      searchIcons: {
+        de: 'Icons suchen...',
+        en: 'Search icons...',
+        es: 'Buscar iconos...',
+        fr: 'Rechercher des icônes...',
+        nl: 'Iconen zoeken...',
+      },
+    },
+  },
   collection: {
     description: {
       de: 'Navigationsmenüs für Ihre Webseite verwalten',
@@ -43,6 +82,13 @@ export const labels = {
       es: 'Hijos',
       fr: 'Enfants',
       nl: 'Kinderen',
+    },
+    icon: {
+      de: 'Icon',
+      en: 'Icon',
+      es: 'Icono',
+      fr: 'Icône',
+      nl: 'Icoon',
     },
     item: {
       de: 'Menüpunkt',

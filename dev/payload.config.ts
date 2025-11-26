@@ -94,6 +94,7 @@ const buildConfigWithMemoryDB = async () => {
     plugins: [
       menusPlugin({
         adminGroup: 'Navigation',
+        allowIcons: true,
         levels: 3,
         linkableCollections: ['pages', 'posts'],
         localized: false,

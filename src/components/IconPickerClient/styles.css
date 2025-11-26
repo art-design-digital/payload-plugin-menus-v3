@@ -1,0 +1,228 @@
+.icon-picker {
+  margin-bottom: 1.5rem;
+}
+
+/* Field description styling to match Payload */
+.field-description {
+  margin-top: calc(var(--base, 1.538rem) * 0.25);
+  margin-bottom: calc(var(--base, 1.538rem) * 0.5);
+  font-size: 0.875rem;
+  color: var(--theme-elevation-600);
+  line-height: 1.4;
+}
+
+.icon-picker-container {
+  position: relative;
+}
+
+/* Custom modifications to rs__control for IconPicker */
+.icon-picker .rs__control {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.icon-picker-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--theme-elevation-300);
+  border-radius: var(--style-radius-s, 3px);
+  background-color: var(--theme-elevation-50);
+  margin-right: calc(var(--base, 1.538rem) * 0.5);
+}
+
+.icon-picker-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--theme-elevation-800);
+}
+
+.icon-picker-placeholder {
+  font-size: 0.75rem;
+  color: var(--theme-elevation-500);
+  text-align: center;
+}
+
+.icon-picker-label {
+  flex: 1;
+  font-size: 12px;
+  color: var(--theme-elevation-800);
+}
+
+/* Indicators container styling */
+.rs__indicators {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.rs__indicator {
+  padding: 0px 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-picker-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin-top: 0.25rem;
+  background-color: var(--theme-elevation-0);
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--style-radius-s, 3px);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.icon-picker-search {
+  padding: calc(var(--base, 1.538rem) * 0.75);
+  border-bottom: 1px solid var(--theme-elevation-150);
+}
+
+/* Search input styling */
+.icon-picker-search-input {
+  width: 100%;
+  padding: calc(var(--base, 1.538rem) * 0.4) calc(var(--base, 1.538rem) * 0.75);
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: var(--style-radius-s, 3px);
+  font-size: 1rem;
+  font-family: var(--font-body);
+  background-color: var(--theme-input-bg, var(--theme-elevation-0));
+  color: var(--theme-elevation-800);
+  transition-property: border, box-shadow;
+  transition-duration: 100ms;
+  transition-timing-function: cubic-bezier(0, 0.2, 0.2, 1);
+}
+
+.icon-picker-search-input:hover {
+  border-color: var(--theme-elevation-250);
+}
+
+.icon-picker-search-input:focus {
+  outline: none;
+  border-color: var(--theme-elevation-400);
+}
+
+.icon-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+  padding: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.icon-picker-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.75rem 0.5rem;
+  border: 1px solid var(--theme-elevation-300);
+  border-radius: 0.375rem;
+  background-color: var(--theme-elevation-0);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.icon-picker-option:hover {
+  border-color: var(--theme-elevation-400);
+  background-color: var(--theme-elevation-50);
+}
+
+.icon-picker-option.selected {
+  border-color: var(--theme-success-500);
+  background-color: var(--theme-success-50);
+}
+
+.icon-picker-option .icon-picker-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--theme-elevation-700);
+}
+
+.icon-picker-option.selected .icon-picker-icon {
+  color: var(--theme-success-600);
+}
+
+.icon-picker-name {
+  font-size: 0.75rem;
+  color: var(--theme-elevation-600);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.icon-picker-option.selected .icon-picker-name {
+  color: var(--theme-success-700);
+  font-weight: 500;
+}
+
+.icon-picker-no-results {
+  padding: 2rem;
+  text-align: center;
+  color: var(--theme-elevation-500);
+  font-size: 0.875rem;
+}
+
+.icon-picker-loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--theme-elevation-600);
+  font-size: 0.875rem;
+}
+
+/* Custom disabled state adjustments */
+.icon-picker .rs__control--is-disabled {
+  cursor: not-allowed;
+}
+
+/* Error state styling to match Payload */
+.icon-picker .rs__control--error {
+  border-color: var(--theme-error-500) !important;
+  background-color: var(--theme-error-50);
+}
+
+.icon-picker .rs__control--error:hover {
+  border-color: var(--theme-error-500) !important;
+}
+
+.icon-picker .rs__control--error:focus,
+.icon-picker .rs__control--error:focus-within {
+  border-color: var(--theme-error-500) !important;
+  box-shadow: 0 0 0 1px var(--theme-error-500) !important;
+}
+
+/* Error message styling */
+.field-error {
+  margin-top: calc(var(--base, 1.538rem) * 0.25);
+  font-size: 0.875rem;
+  color: var(--theme-error-500);
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .icon-picker-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .icon-picker-option {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .icon-picker-name {
+    font-size: 0.625rem;
+  }
+}

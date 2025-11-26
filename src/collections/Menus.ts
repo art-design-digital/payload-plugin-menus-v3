@@ -5,6 +5,7 @@ import type { MenusPluginConfig } from '../types.js'
 import {
   anchorField,
   customURLField,
+  highlightField,
   iconField,
   labelField,
   linkTypeField,
@@ -33,6 +34,9 @@ const createMenuItemFields = (
   const isChildLevel = currentLevel > 1
 
   const fields: Field[] = []
+
+  // Add highlight checkbox as first field for every menu item
+  fields.push(highlightField)
 
   // Add marginTop checkbox only for child items (not top-level)
   if (isChildLevel) {

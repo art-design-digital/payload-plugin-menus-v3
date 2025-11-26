@@ -90,6 +90,13 @@ export const labels = {
       fr: 'Veuillez ajouter au moins un élément enfant',
       nl: 'Voeg ten minste één kindelement toe',
     },
+    highlight: {
+      de: 'Menüpunkt hervorheben',
+      en: 'Highlight',
+      es: 'Destacar',
+      fr: 'Mettre en évidence',
+      nl: 'Markeren',
+    },
     icon: {
       de: 'Icon',
       en: 'Icon',

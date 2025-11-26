@@ -1,5 +1,6 @@
 export { anchorField } from './AnchorField.js'
 export { customURLField } from './CustomURLField.js'
+export { highlightField } from './HighlightField.js'
 export { iconField } from './IconField.js'
 export type { IconPackType } from './IconField.js'
 export { labelField } from './LabelField.js'

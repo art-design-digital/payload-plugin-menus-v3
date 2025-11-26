@@ -1,4 +1,4 @@
-import type { ArrayField, CollectionConfig, Field } from 'payload'
+import type { ArrayField, CollectionConfig, Field, TabsField } from 'payload'
 
 import type { MenusPluginConfig } from '../types.js'
 
@@ -35,33 +35,52 @@ const createMenuItemFields = (
 
   const fields: Field[] = []
 
-  // Add highlight checkbox as first field for every menu item
-  fields.push(highlightField)
+  // Link Settings Tab
+  const linkSettingsFields: Field[] = [
+    labelField(localized),
+    linkTypeField(canHaveChildren),
+    customURLField(localized),
+  ]
+
+  if (linkableCollections.length > 0) {
+    linkSettingsFields.push(referenceField(linkableCollections), anchorField)
+  }
+
+  linkSettingsFields.push(openInNewTabField)
+
+  // Appearance Tab
+  const appearanceFields: Field[] = [highlightField]
 
   // Add marginTop checkbox only for child items (not top-level)
   if (isChildLevel) {
-    fields.push(marginTopField)
+    appearanceFields.push(marginTopField)
   }
-
-  fields.push(labelField(localized))
 
   // Add icon field only if allowIcons is enabled
   if (allowIcons) {
-    fields.push(iconField(iconPack))
+    appearanceFields.push(iconField(iconPack))
   }
 
   // Add preview image field only if allowPreviewImages is enabled
   if (allowPreviewImages) {
-    fields.push(previewImageField(previewImagesMediaCollection))
+    appearanceFields.push(previewImageField(previewImagesMediaCollection))
   }
 
-  fields.push(linkTypeField(canHaveChildren), customURLField(localized))
-
-  if (linkableCollections.length > 0) {
-    fields.push(referenceField(linkableCollections), anchorField)
+  const tabsField: TabsField = {
+    type: 'tabs',
+    tabs: [
+      {
+        fields: linkSettingsFields,
+        label: labels.groups.linkSettings,
+      },
+      {
+        fields: appearanceFields,
+        label: labels.groups.appearance,
+      },
+    ],
   }
 
-  fields.push(openInNewTabField)
+  fields.push(tabsField)
 
   // Add children array if we haven't reached max depth
   if (canHaveChildren) {

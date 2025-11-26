@@ -224,4 +224,20 @@ export const labels = {
       nl: 'Voer een URL in',
     },
   },
+  groups: {
+    appearance: {
+      de: 'Darstellung',
+      en: 'Appearance',
+      es: 'Apariencia',
+      fr: 'Apparence',
+      nl: 'Weergave',
+    },
+    linkSettings: {
+      de: 'Link-Einstellungen',
+      en: 'Link Settings',
+      es: 'Configuración del enlace',
+      fr: 'Paramètres du lien',
+      nl: 'Link-instellingen',
+    },
+  },
 } as const

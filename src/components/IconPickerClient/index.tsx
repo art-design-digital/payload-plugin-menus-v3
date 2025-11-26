@@ -32,11 +32,14 @@ const IconPickerClient = (props: IconPickerProps) => {
 
   type TranslationKey = keyof typeof labels.client.iconPicker.clear
 
-  // Detect current language from html lang attribute (fallback to 'en')
-  const currentLanguage: TranslationKey =
-    typeof document !== 'undefined'
-      ? ((document.documentElement.lang || 'en') as TranslationKey)
-      : 'en'
+  // Use state for language to avoid hydration mismatch
+  const [currentLanguage, setCurrentLanguage] = useState<TranslationKey>('en')
+
+  // Detect current language on client side only
+  useEffect(() => {
+    const lang = (document.documentElement.lang || 'en') as TranslationKey
+    setCurrentLanguage(lang)
+  }, [])
 
   // Helper to get translated string
   const t = (key: keyof typeof labels.client.iconPicker) =>

@@ -1,9 +1,13 @@
+import type { SupportedLanguages } from '@payloadcms/translations'
+
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { de } from '@payloadcms/translations/languages/de'
+import { en } from '@payloadcms/translations/languages/en'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import path from 'path'
 import { buildConfig } from 'payload'
-import { payloadPluginMenusV3 } from 'payload-plugin-menus-v3'
+import { menusPlugin } from 'payload-plugin-menus-v3'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
@@ -37,8 +41,35 @@ const buildConfigWithMemoryDB = async () => {
     },
     collections: [
       {
+        slug: 'pages',
+        admin: {
+          useAsTitle: 'title',
+        },
+        fields: [
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'slug',
+            type: 'text',
+            required: true,
+          },
+        ],
+      },
+      {
         slug: 'posts',
-        fields: [],
+        admin: {
+          useAsTitle: 'title',
+        },
+        fields: [
+          {
+            name: 'title',
+            type: 'text',
+            required: true,
+          },
+        ],
       },
       {
         slug: 'media',
@@ -54,14 +85,19 @@ const buildConfigWithMemoryDB = async () => {
     }),
     editor: lexicalEditor(),
     email: testEmailAdapter,
+    i18n: {
+      supportedLanguages: { de, en } as Record<string, SupportedLanguages>,
+    },
     onInit: async (payload) => {
       await seed(payload)
     },
+
     plugins: [
-      payloadPluginMenusV3({
-        collections: {
-          posts: true,
-        },
+      menusPlugin({
+        adminGroup: 'Navigation',
+        levels: 3,
+        linkableCollections: ['pages', 'posts'],
+        localized: false,
       }),
     ],
     secret: process.env.PAYLOAD_SECRET || 'test-secret_key',

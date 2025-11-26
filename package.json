@@ -116,5 +116,7 @@
     ]
   },
   "registry": "https://registry.npmjs.org/",
-  "dependencies": {}
+  "dependencies": {
+    "@payloadcms/translations": "^3.65.0"
+  }
 }

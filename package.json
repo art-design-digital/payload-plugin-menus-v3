@@ -81,7 +81,13 @@
     "vitest": "^3.1.2"
   },
   "peerDependencies": {
-    "payload": "^3.37.0"
+    "payload": "^3.37.0",
+    "react-icons": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-icons": {
+      "optional": true
+    }
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0",
@@ -115,9 +121,5 @@
       "unrs-resolver"
     ]
   },
-  "registry": "https://registry.npmjs.org/",
-  "dependencies": {
-    "@payloadcms/translations": "^3.65.0",
-    "react-icons": "^5.5.0"
-  }
+  "registry": "https://registry.npmjs.org/"
 }

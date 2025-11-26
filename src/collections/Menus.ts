@@ -1,7 +1,17 @@
-import type { ArrayField, CollectionConfig, Field, OptionObject } from 'payload'
+import type { ArrayField, CollectionConfig, Field } from 'payload'
 
 import type { MenusPluginConfig } from '../types.js'
 
+import {
+  anchorField,
+  customURLField,
+  labelField,
+  linkTypeField,
+  marginTopField,
+  openInNewTabField,
+  referenceField,
+  titleField,
+} from '../fields/index.js'
 import { labels } from '../i18n/translations.js'
 
 const createMenuItemFields = (
@@ -13,98 +23,20 @@ const createMenuItemFields = (
   const canHaveChildren = currentLevel < maxLevels
   const isChildLevel = currentLevel > 1
 
-  const linkTypeOptions: OptionObject[] = [
-    {
-      label: labels.fields.linkTypeInternal,
-      value: 'internal',
-    },
-    {
-      label: labels.fields.linkTypeExternal,
-      value: 'external',
-    },
-  ]
-
-  // Only add "children" option if we can have children at this level
-  if (canHaveChildren) {
-    linkTypeOptions.push({
-      label: labels.fields.linkTypeChildren,
-      value: 'children',
-    })
-  }
-
   const fields: Field[] = []
 
   // Add marginTop checkbox only for child items (not top-level)
   if (isChildLevel) {
-    fields.push({
-      name: 'marginTop',
-      type: 'checkbox',
-      defaultValue: false,
-      label: labels.fields.marginTop,
-    })
+    fields.push(marginTopField)
   }
 
-  fields.push(
-    {
-      name: 'label',
-      type: 'text',
-      label: labels.fields.label,
-      localized,
-      required: true,
-    },
-    {
-      name: 'linkType',
-      type: 'radio',
-      admin: {
-        layout: 'horizontal',
-      },
-      defaultValue: 'internal',
-      label: labels.fields.linkType,
-      options: linkTypeOptions,
-    },
-    {
-      name: 'url',
-      type: 'text',
-      admin: {
-        condition: (_, siblingData) => siblingData?.linkType === 'external',
-      },
-      label: labels.fields.url,
-      localized,
-    },
-  )
+  fields.push(labelField(localized), linkTypeField(canHaveChildren), customURLField(localized))
 
   if (linkableCollections.length > 0) {
-    fields.push(
-      {
-        name: 'reference',
-        type: 'relationship',
-        admin: {
-          allowCreate: false,
-          condition: (_, siblingData) => siblingData?.linkType === 'internal',
-        },
-        label: labels.fields.reference,
-        relationTo: linkableCollections,
-      },
-      {
-        name: 'anchor',
-        type: 'text',
-        admin: {
-          condition: (_, siblingData) => siblingData?.linkType === 'internal',
-        },
-        label: labels.fields.anchor,
-      },
-    )
+    fields.push(referenceField(linkableCollections), anchorField)
   }
 
-  fields.push({
-    name: 'openInNewTab',
-    type: 'checkbox',
-    admin: {
-      condition: (_, siblingData) => siblingData?.linkType !== 'children',
-    },
-    defaultValue: false,
-    label: labels.fields.openInNewTab,
-  })
+  fields.push(openInNewTabField)
 
   // Add children array if we haven't reached max depth
   if (canHaveChildren) {
@@ -161,16 +93,7 @@ export const createMenusCollection = (config: MenusPluginConfig): CollectionConf
       group: adminGroup,
       useAsTitle: 'title',
     },
-    fields: [
-      {
-        name: 'title',
-        type: 'text',
-        label: labels.fields.title,
-        localized,
-        required: true,
-      },
-      itemsField,
-    ],
+    fields: [titleField(localized), itemsField],
     labels: {
       plural: labels.collection.plural,
       singular: labels.collection.singular,

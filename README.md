@@ -70,6 +70,9 @@ export default buildConfig({
 | `localized` | `boolean` | `false` | Enable localization for menu item labels and URLs |
 | `allowIcons` | `boolean` | `false` | Enable the icon picker field for menu items |
 | `iconPack` | `IconPackType` | `'Phosphor Icons'` | Icon pack to use (requires `react-icons`) |
+| `allowPreviewImages` | `boolean` | `false` | Enable preview image upload for menu items |
+| `previewImagesMediaCollection` | `string` | `'media'` | Media collection slug for preview images |
+| `access` | `CollectionConfig['access']` | `{ read: () => true }` | Override access control for the Menus collection |
 | `disabled` | `boolean` | `false` | Disable the plugin |
 
 ### Available Icon Packs
@@ -99,6 +102,7 @@ Each menu item can have the following properties:
 | `customURL` | External URL (when `linkType` is `external`, must start with `https://`) |
 | `openInNewTab` | Open link in a new tab |
 | `icon` | Selected icon name (when `allowIcons` is enabled) |
+| `previewImage` | Reference to a media item (when `allowPreviewImages` is enabled) |
 | `marginTop` | Add spacing above this item (child items only) |
 | `children` | Nested menu items (when `linkType` is `children`) |
 

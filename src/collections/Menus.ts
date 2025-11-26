@@ -10,6 +10,7 @@ import {
   linkTypeField,
   marginTopField,
   openInNewTabField,
+  previewImageField,
   referenceField,
   titleField,
 } from '../fields/index.js'
@@ -22,9 +23,11 @@ const createMenuItemFields = (
 ): Field[] => {
   const {
     allowIcons = false,
+    allowPreviewImages = false,
     iconPack = 'Phosphor Icons',
     linkableCollections = [],
     localized = false,
+    previewImagesMediaCollection = 'media',
   } = config
   const canHaveChildren = currentLevel < maxLevels
   const isChildLevel = currentLevel > 1
@@ -41,6 +44,11 @@ const createMenuItemFields = (
   // Add icon field only if allowIcons is enabled
   if (allowIcons) {
     fields.push(iconField(iconPack))
+  }
+
+  // Add preview image field only if allowPreviewImages is enabled
+  if (allowPreviewImages) {
+    fields.push(previewImageField(previewImagesMediaCollection))
   }
 
   fields.push(linkTypeField(canHaveChildren), customURLField(localized))

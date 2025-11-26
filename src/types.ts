@@ -20,6 +20,11 @@ export type MenusPluginConfig = {
   allowIcons?: boolean
 
   /**
+   * Enable preview images for menu items (default: false)
+   */
+  allowPreviewImages?: boolean
+
+  /**
    * Disable the plugin (keeps schema for migrations)
    */
   disabled?: boolean
@@ -44,4 +49,10 @@ export type MenusPluginConfig = {
    * Enable localization for menu fields (title, url, label)
    */
   localized?: boolean
+
+  /**
+   * Media collection slug for preview images (default: 'media')
+   * Only used when allowPreviewImages is true
+   */
+  previewImagesMediaCollection?: string
 }

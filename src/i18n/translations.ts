@@ -167,6 +167,13 @@ export const labels = {
       fr: 'Ouvrir dans un nouvel onglet',
       nl: 'Open in nieuw tabblad',
     },
+    previewImage: {
+      de: 'Vorschaubild',
+      en: 'Preview Image',
+      es: 'Imagen de vista previa',
+      fr: 'Image de prévisualisation',
+      nl: 'Voorbeeldafbeelding',
+    },
     reference: {
       de: 'Referenz',
       en: 'Reference',

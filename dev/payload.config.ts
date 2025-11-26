@@ -91,7 +91,6 @@ const buildConfigWithMemoryDB = async () => {
     onInit: async (payload) => {
       await seed(payload)
     },
-
     plugins: [
       menusPlugin({
         adminGroup: 'Navigation',

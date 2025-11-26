@@ -91,20 +91,28 @@ When `allowIcons` is enabled, you can choose from these icon packs:
 
 ## Menu Item Structure
 
-Each menu item can have the following properties:
+Each menu item is organized into two tabs:
+
+### Link Settings Tab
 
 | Field | Description |
 |-------|-------------|
 | `label` | Display text for the menu item (required) |
 | `linkType` | Type of link: `internal`, `external`, or `children` |
+| `customURL` | External URL (when `linkType` is `external`, must start with `https://`) |
 | `reference` | Reference to a document (when `linkType` is `internal`) |
 | `anchor` | Optional anchor/hash for internal links (e.g., `#section`) |
-| `customURL` | External URL (when `linkType` is `external`, must start with `https://`) |
 | `openInNewTab` | Open link in a new tab |
+| `children` | Nested menu items (when `linkType` is `children`) |
+
+### Appearance Tab
+
+| Field | Description |
+|-------|-------------|
+| `highlight` | Highlight this menu item (e.g., for CTA buttons) |
+| `marginTop` | Add spacing above this item (child items only) |
 | `icon` | Selected icon name (when `allowIcons` is enabled) |
 | `previewImage` | Reference to a media item (when `allowPreviewImages` is enabled) |
-| `marginTop` | Add spacing above this item (child items only) |
-| `children` | Nested menu items (when `linkType` is `children`) |
 
 ## Using the IconPicker Field Standalone
 

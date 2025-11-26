@@ -107,6 +107,10 @@ const createMenuItemFields = (
       },
       fields: createMenuItemFields(config, currentLevel + 1, maxLevels),
       label: labels.fields.children,
+      labels: {
+        plural: labels.fields.children,
+        singular: labels.fields.child,
+      },
     }
     fields.push(childrenField)
   }
@@ -128,6 +132,10 @@ export const createMenusCollection = (config: MenusPluginConfig): CollectionConf
     },
     fields: createMenuItemFields(config, 1, levels),
     label: labels.fields.items,
+    labels: {
+      plural: labels.fields.items,
+      singular: labels.fields.item,
+    },
   }
 
   return {

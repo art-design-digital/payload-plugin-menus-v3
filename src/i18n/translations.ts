@@ -23,6 +23,13 @@ export const labels = {
     },
   },
   fields: {
+    anchor: {
+      de: 'Anker',
+      en: 'Anchor',
+      es: 'Ancla',
+      fr: 'Ancre',
+      nl: 'Anker',
+    },
     children: {
       de: 'Untermenü',
       en: 'Children',

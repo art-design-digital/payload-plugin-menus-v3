@@ -50,16 +50,26 @@ const createMenuItemFields = (
   ]
 
   if (linkableCollections.length > 0) {
-    fields.push({
-      name: 'reference',
-      type: 'relationship',
-      admin: {
-        allowCreate: false,
-        condition: (_, siblingData) => siblingData?.linkType === 'internal',
+    fields.push(
+      {
+        name: 'reference',
+        type: 'relationship',
+        admin: {
+          allowCreate: false,
+          condition: (_, siblingData) => siblingData?.linkType === 'internal',
+        },
+        label: labels.fields.reference,
+        relationTo: linkableCollections,
       },
-      label: labels.fields.reference,
-      relationTo: linkableCollections,
-    })
+      {
+        name: 'anchor',
+        type: 'text',
+        admin: {
+          condition: (_, siblingData) => siblingData?.linkType === 'internal',
+        },
+        label: labels.fields.anchor,
+      },
+    )
   }
 
   fields.push({
@@ -76,7 +86,7 @@ const createMenuItemFields = (
       type: 'array',
       admin: {
         components: {
-          RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabel',
+          RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabelClient',
         },
         initCollapsed: true,
       },
@@ -97,7 +107,7 @@ export const createMenusCollection = (config: MenusPluginConfig): CollectionConf
     type: 'array',
     admin: {
       components: {
-        RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabel',
+        RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabelClient',
       },
       initCollapsed: true,
     },

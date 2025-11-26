@@ -1,1 +1,1 @@
-export { MenuItemRowLabelClient } from '../components/MenuItemRowLabel.js'
+export { MenuItemRowLabelClient } from '../components/MenuItemRowLabelClient.js'

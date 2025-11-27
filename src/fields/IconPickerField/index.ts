@@ -17,7 +17,7 @@ export const iconPickerField = (overrides?: IconPickerFieldOptions): TextField =
     admin: {
       ...admin,
       components: {
-        Field: 'payload-plugin-menus-v3/client#IconPickerClient',
+        Field: '@art-design-digital/payload-plugin-menus-v3/client#IconPickerClient',
       },
       iconPack: iconPack || 'Phosphor Icons',
     },

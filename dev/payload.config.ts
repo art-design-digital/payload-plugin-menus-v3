@@ -1,5 +1,6 @@
 import type { SupportedLanguages } from '@payloadcms/translations'
 
+import { menusPlugin } from '@art-design-digital/payload-plugin-menus-v3'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { de } from '@payloadcms/translations/languages/de'
@@ -7,7 +8,6 @@ import { en } from '@payloadcms/translations/languages/en'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import path from 'path'
 import { buildConfig } from 'payload'
-import { menusPlugin } from 'payload-plugin-menus-v3'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 

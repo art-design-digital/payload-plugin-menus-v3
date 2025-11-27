@@ -14,11 +14,11 @@ A flexible navigation menu plugin for [Payload CMS](https://payloadcms.com) v3.
 ## Installation
 
 ```bash
-npm install payload-plugin-menus-v3
+npm install @art-design-digital/payload-plugin-menus-v3
 # or
-pnpm add payload-plugin-menus-v3
+pnpm add @art-design-digital/payload-plugin-menus-v3
 # or
-yarn add payload-plugin-menus-v3
+yarn add @art-design-digital/payload-plugin-menus-v3
 ```
 
 ### Optional: Icon Picker
@@ -35,7 +35,7 @@ Add the plugin to your Payload config:
 
 ```ts
 import { buildConfig } from 'payload'
-import { menusPlugin } from 'payload-plugin-menus-v3'
+import { menusPlugin } from '@art-design-digital/payload-plugin-menus-v3'
 
 export default buildConfig({
   // ... your config
@@ -62,18 +62,18 @@ export default buildConfig({
 
 ## Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `linkableCollections` | `string[]` | `[]` | Collection slugs that can be linked to for internal links |
-| `levels` | `1 \| 2 \| 3` | `2` | Maximum nesting depth for menu items |
-| `adminGroup` | `string` | `undefined` | Admin panel group name for the Menus collection |
-| `localized` | `boolean` | `false` | Enable localization for menu item labels and URLs |
-| `allowIcons` | `boolean` | `false` | Enable the icon picker field for menu items |
-| `iconPack` | `IconPackType` | `'Phosphor Icons'` | Icon pack to use (requires `react-icons`) |
-| `allowPreviewImages` | `boolean` | `false` | Enable preview image upload for menu items |
-| `previewImagesMediaCollection` | `string` | `'media'` | Media collection slug for preview images |
-| `access` | `CollectionConfig['access']` | `{ read: () => true }` | Override access control for the Menus collection |
-| `disabled` | `boolean` | `false` | Disable the plugin |
+| Option                         | Type                         | Default                | Description                                               |
+| ------------------------------ | ---------------------------- | ---------------------- | --------------------------------------------------------- |
+| `linkableCollections`          | `string[]`                   | `[]`                   | Collection slugs that can be linked to for internal links |
+| `levels`                       | `1 \| 2 \| 3`                | `2`                    | Maximum nesting depth for menu items                      |
+| `adminGroup`                   | `string`                     | `undefined`            | Admin panel group name for the Menus collection           |
+| `localized`                    | `boolean`                    | `false`                | Enable localization for menu item labels and URLs         |
+| `allowIcons`                   | `boolean`                    | `false`                | Enable the icon picker field for menu items               |
+| `iconPack`                     | `IconPackType`               | `'Phosphor Icons'`     | Icon pack to use (requires `react-icons`)                 |
+| `allowPreviewImages`           | `boolean`                    | `false`                | Enable preview image upload for menu items                |
+| `previewImagesMediaCollection` | `string`                     | `'media'`              | Media collection slug for preview images                  |
+| `access`                       | `CollectionConfig['access']` | `{ read: () => true }` | Override access control for the Menus collection          |
+| `disabled`                     | `boolean`                    | `false`                | Disable the plugin                                        |
 
 ### Available Icon Packs
 
@@ -95,23 +95,23 @@ Each menu item is organized into two tabs:
 
 ### Link Settings Tab
 
-| Field | Description |
-|-------|-------------|
-| `label` | Display text for the menu item (required) |
-| `linkType` | Type of link: `internal`, `external`, or `children` |
-| `customURL` | External URL (when `linkType` is `external`, must start with `https://`) |
-| `reference` | Reference to a document (when `linkType` is `internal`) |
-| `anchor` | Optional anchor/hash for internal links (e.g., `#section`) |
-| `openInNewTab` | Open link in a new tab |
-| `children` | Nested menu items (when `linkType` is `children`) |
+| Field          | Description                                                              |
+| -------------- | ------------------------------------------------------------------------ |
+| `label`        | Display text for the menu item (required)                                |
+| `linkType`     | Type of link: `internal`, `external`, or `children`                      |
+| `customURL`    | External URL (when `linkType` is `external`, must start with `https://`) |
+| `reference`    | Reference to a document (when `linkType` is `internal`)                  |
+| `anchor`       | Optional anchor/hash for internal links (e.g., `#section`)               |
+| `openInNewTab` | Open link in a new tab                                                   |
+| `children`     | Nested menu items (when `linkType` is `children`)                        |
 
 ### Appearance Tab
 
-| Field | Description |
-|-------|-------------|
-| `highlight` | Highlight this menu item (e.g., for CTA buttons) |
-| `marginTop` | Add spacing above this item (child items only) |
-| `icon` | Selected icon name (when `allowIcons` is enabled) |
+| Field          | Description                                                      |
+| -------------- | ---------------------------------------------------------------- |
+| `highlight`    | Highlight this menu item (e.g., for CTA buttons)                 |
+| `marginTop`    | Add spacing above this item (child items only)                   |
+| `icon`         | Selected icon name (when `allowIcons` is enabled)                |
 | `previewImage` | Reference to a media item (when `allowPreviewImages` is enabled) |
 
 ## Using the IconPicker Field Standalone
@@ -119,7 +119,7 @@ Each menu item is organized into two tabs:
 You can also use the icon picker field in your own collections:
 
 ```ts
-import { iconPickerField } from 'payload-plugin-menus-v3'
+import { iconPickerField } from '@art-design-digital/payload-plugin-menus-v3'
 
 const MyCollection = {
   slug: 'my-collection',
@@ -167,7 +167,7 @@ All field labels, validation messages, and UI elements are translated based on y
 The plugin exports types for use in your project:
 
 ```ts
-import type { MenusPluginConfig, IconPackType } from 'payload-plugin-menus-v3'
+import type { MenusPluginConfig, IconPackType } from '@art-design-digital/payload-plugin-menus-v3'
 ```
 
 ## License

@@ -60,7 +60,7 @@ const createMenuItemFields = (
       type: 'array',
       admin: {
         components: {
-          RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabelClient',
+          RowLabel: '@art-design-digital/payload-plugin-menus-v3/client#MenuItemRowLabelClient',
         },
         condition: (_, siblingData) => siblingData?.linkType === 'children',
         initCollapsed: true,
@@ -128,7 +128,7 @@ export const createMenusCollection = (config: MenusPluginConfig): CollectionConf
     type: 'array',
     admin: {
       components: {
-        RowLabel: 'payload-plugin-menus-v3/client#MenuItemRowLabelClient',
+        RowLabel: '@art-design-digital/payload-plugin-menus-v3/client#MenuItemRowLabelClient',
       },
       initCollapsed: true,
     },

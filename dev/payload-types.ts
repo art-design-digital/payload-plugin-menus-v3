@@ -170,8 +170,8 @@ export interface Menu {
   items?:
     | {
         label: string;
-        linkType?: ('internal' | 'external') | null;
-        url?: string | null;
+        linkType?: ('internal' | 'external' | 'children') | null;
+        customURL?: string | null;
         reference?:
           | ({
               relationTo: 'pages';
@@ -181,12 +181,13 @@ export interface Menu {
               relationTo: 'posts';
               value: string | Post;
             } | null);
+        anchor?: string | null;
         openInNewTab?: boolean | null;
         children?:
           | {
               label: string;
-              linkType?: ('internal' | 'external') | null;
-              url?: string | null;
+              linkType?: ('internal' | 'external' | 'children') | null;
+              customURL?: string | null;
               reference?:
                 | ({
                     relationTo: 'pages';
@@ -196,10 +197,41 @@ export interface Menu {
                     relationTo: 'posts';
                     value: string | Post;
                   } | null);
+              anchor?: string | null;
               openInNewTab?: boolean | null;
+              children?:
+                | {
+                    label: string;
+                    linkType?: ('internal' | 'external') | null;
+                    customURL?: string | null;
+                    reference?:
+                      | ({
+                          relationTo: 'pages';
+                          value: string | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: string | Post;
+                        } | null);
+                    anchor?: string | null;
+                    openInNewTab?: boolean | null;
+                    highlight?: boolean | null;
+                    marginTop?: boolean | null;
+                    icon?: string | null;
+                    previewImage?: (string | null) | Media;
+                    id?: string | null;
+                  }[]
+                | null;
+              highlight?: boolean | null;
+              marginTop?: boolean | null;
+              icon?: string | null;
+              previewImage?: (string | null) | Media;
               id?: string | null;
             }[]
           | null;
+        highlight?: boolean | null;
+        icon?: string | null;
+        previewImage?: (string | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -339,19 +371,43 @@ export interface MenusSelect<T extends boolean = true> {
     | {
         label?: T;
         linkType?: T;
-        url?: T;
+        customURL?: T;
         reference?: T;
+        anchor?: T;
         openInNewTab?: T;
         children?:
           | T
           | {
               label?: T;
               linkType?: T;
-              url?: T;
+              customURL?: T;
               reference?: T;
+              anchor?: T;
               openInNewTab?: T;
+              children?:
+                | T
+                | {
+                    label?: T;
+                    linkType?: T;
+                    customURL?: T;
+                    reference?: T;
+                    anchor?: T;
+                    openInNewTab?: T;
+                    highlight?: T;
+                    marginTop?: T;
+                    icon?: T;
+                    previewImage?: T;
+                    id?: T;
+                  };
+              highlight?: T;
+              marginTop?: T;
+              icon?: T;
+              previewImage?: T;
               id?: T;
             };
+        highlight?: T;
+        icon?: T;
+        previewImage?: T;
         id?: T;
       };
   updatedAt?: T;

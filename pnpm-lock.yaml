@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@payloadcms/translations':
+        specifier: ^3.65.0
+        version: 3.65.0
       react-icons:
         specifier: ^5.0.0
         version: 5.5.0(react@19.1.0)
@@ -1671,6 +1674,9 @@ packages:
 
   '@payloadcms/translations@3.37.0':
     resolution: {integrity: sha512-eFfvyREcyVB8XktSJ8Dazvs57qiKYZCESQcmsTgIwHTKskXwgZNtDXMYMbGQRDlPUgfIGab2uQSRtAnVuM9MaA==}
+
+  '@payloadcms/translations@3.65.0':
+    resolution: {integrity: sha512-wjKY0jHdudLeMZwSfJi2yQxyeRV6AkOgV9k2NuiltvwglYjBXM35XP15Bq9UYYS5UJ9nhajK1WZdHRn5qJ0gEA==}
 
   '@payloadcms/ui@3.37.0':
     resolution: {integrity: sha512-zGHYzY8xqeGTIV9UeoDuHS4jPPeL3bFW3fNICQe9A0xgYyMwkBmEjyKF5n/miBYCzBmX0O7ztDtu8kayIDU3yg==}
@@ -6982,6 +6988,10 @@ snapshots:
       - yjs
 
   '@payloadcms/translations@3.37.0':
+    dependencies:
+      date-fns: 4.1.0
+
+  '@payloadcms/translations@3.65.0':
     dependencies:
       date-fns: 4.1.0
 

@@ -1,6 +1,6 @@
 {
   "name": "@art-design-digital/payload-plugin-menus-v3",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A Payload plugin for menus. This plugin adds a global collection of menus to your Payload instance. You can create and manage menus in the admin interface, and then render them in your frontend application.",
   "license": "MIT",
   "type": "module",

@@ -1,0 +1,5 @@
+export { de } from './de.js'
+export { en } from './en.js'
+export { es } from './es.js'
+export { fr } from './fr.js'
+export { nl } from './nl.js'

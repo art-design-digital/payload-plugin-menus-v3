@@ -1,243 +1,77 @@
+import { de } from './locales/de.js'
+import { en } from './locales/en.js'
+import { es } from './locales/es.js'
+import { fr } from './locales/fr.js'
+import { nl } from './locales/nl.js'
+
+export type SupportedLanguage = 'de' | 'en' | 'es' | 'fr' | 'nl'
+
+export const locales = { de, en, es, fr, nl } as const
+
+type LocaleStrings = Record<SupportedLanguage, string>
+
+/**
+ * Creates a multi-language label object from all locales
+ * Payload expects: { de: 'German', en: 'English', ... }
+ */
+const t = (path: string): LocaleStrings => ({
+  de: getNestedValue(de, path) as string,
+  en: getNestedValue(en, path) as string,
+  es: getNestedValue(es, path) as string,
+  fr: getNestedValue(fr, path) as string,
+  nl: getNestedValue(nl, path) as string,
+})
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getNestedValue = (obj: any, path: string): unknown => {
+  return path.split('.').reduce((current, key) => current?.[key], obj)
+}
+
+/**
+ * Multi-language labels for Payload admin UI
+ */
 export const labels = {
   client: {
     iconPicker: {
-      clear: {
-        de: 'Löschen',
-        en: 'Clear',
-        es: 'Borrar',
-        fr: 'Effacer',
-        nl: 'Wissen',
-      },
-      loadingIcons: {
-        de: 'Icons werden geladen...',
-        en: 'Loading icons...',
-        es: 'Cargando iconos...',
-        fr: 'Chargement des icônes...',
-        nl: 'Iconen laden...',
-      },
-      noIconSelected: {
-        de: 'Kein Icon ausgewählt',
-        en: 'No icon selected',
-        es: 'Ningún icono seleccionado',
-        fr: 'Aucune icône sélectionnée',
-        nl: 'Geen icoon geselecteerd',
-      },
-      noResults: {
-        de: 'Keine Icons gefunden für',
-        en: 'No icons found for',
-        es: 'No se encontraron iconos para',
-        fr: 'Aucune icône trouvée pour',
-        nl: 'Geen iconen gevonden voor',
-      },
-      searchIcons: {
-        de: 'Icons suchen...',
-        en: 'Search icons...',
-        es: 'Buscar iconos...',
-        fr: 'Rechercher des icônes...',
-        nl: 'Iconen zoeken...',
-      },
+      clear: t('client.iconPicker.clear'),
+      loadingIcons: t('client.iconPicker.loadingIcons'),
+      noIconSelected: t('client.iconPicker.noIconSelected'),
+      noResults: t('client.iconPicker.noResults'),
+      searchIcons: t('client.iconPicker.searchIcons'),
     },
   },
   collection: {
-    description: {
-      de: 'Navigationsmenüs für Ihre Webseite verwalten',
-      en: 'Manage navigation menus for your website',
-      es: 'Gestionar menús de navegación para su sitio web',
-      fr: 'Gérer les menus de navigation de votre site',
-      nl: "Beheer navigatiemenu's voor uw website",
-    },
-    plural: {
-      de: 'Menüs',
-      en: 'Menus',
-      es: 'Menús',
-      fr: 'Menus',
-      nl: "Menu's",
-    },
-    singular: {
-      de: 'Menü',
-      en: 'Menu',
-      es: 'Menú',
-      fr: 'Menu',
-      nl: 'Menu',
-    },
+    description: t('collection.description'),
+    plural: t('collection.plural'),
+    singular: t('collection.singular'),
   },
   fields: {
-    anchor: {
-      de: 'Anker',
-      en: 'Anchor',
-      es: 'Ancla',
-      fr: 'Ancre',
-      nl: 'Anker',
-    },
-    child: {
-      de: 'Kindelement',
-      en: 'Child',
-      es: 'Hijo',
-      fr: 'Enfant',
-      nl: 'Kind',
-    },
-    children: {
-      de: 'Kindelemente',
-      en: 'Children',
-      es: 'Hijos',
-      fr: 'Enfants',
-      nl: 'Kinderen',
-    },
-    childrenRequired: {
-      de: 'Bitte fügen Sie mindestens ein Kindelement hinzu',
-      en: 'Please add at least one child item',
-      es: 'Por favor agregue al menos un elemento hijo',
-      fr: 'Veuillez ajouter au moins un élément enfant',
-      nl: 'Voeg ten minste één kindelement toe',
-    },
-    highlight: {
-      de: 'Menüpunkt hervorheben',
-      en: 'Highlight',
-      es: 'Destacar',
-      fr: 'Mettre en évidence',
-      nl: 'Markeren',
-    },
-    icon: {
-      de: 'Icon',
-      en: 'Icon',
-      es: 'Icono',
-      fr: 'Icône',
-      nl: 'Icoon',
-    },
-    item: {
-      de: 'Menüpunkt',
-      en: 'Menu Item',
-      es: 'Elemento del menú',
-      fr: 'Élément du menu',
-      nl: 'Menu-item',
-    },
-    itemFallback: {
-      de: 'Menüpunkt',
-      en: 'Menu Item',
-      es: 'Elemento de menú',
-      fr: 'Élément de menu',
-      nl: 'Menu-item',
-    },
-    items: {
-      de: 'Menüpunkte',
-      en: 'Menu Items',
-      es: 'Elementos del menú',
-      fr: 'Éléments du menu',
-      nl: 'Menu-items',
-    },
-    label: {
-      de: 'Bezeichnung',
-      en: 'Label',
-      es: 'Etiqueta',
-      fr: 'Libellé',
-      nl: 'Label',
-    },
-    linkType: {
-      de: 'Link-Typ',
-      en: 'Link Type',
-      es: 'Tipo de enlace',
-      fr: 'Type de lien',
-      nl: 'Link type',
-    },
-    linkTypeChildren: {
-      de: 'Mit Kindelementen',
-      en: 'With Children',
-      es: 'Con hijos',
-      fr: 'Avec enfants',
-      nl: 'Met kinderen',
-    },
-    linkTypeExternal: {
-      de: 'Extern',
-      en: 'External',
-      es: 'Externo',
-      fr: 'Externe',
-      nl: 'Extern',
-    },
-    linkTypeInternal: {
-      de: 'Intern',
-      en: 'Internal',
-      es: 'Interno',
-      fr: 'Interne',
-      nl: 'Intern',
-    },
-    marginTop: {
-      de: 'Abstand zum vorherigen Menüpunkt',
-      en: 'Spacing to previous item',
-      es: 'Espacio al elemento anterior',
-      fr: 'Espacement avec l\'élément précédent',
-      nl: 'Afstand tot vorig item',
-    },
-    openInNewTab: {
-      de: 'In neuem Tab öffnen',
-      en: 'Open in new tab',
-      es: 'Abrir en nueva pestaña',
-      fr: 'Ouvrir dans un nouvel onglet',
-      nl: 'Open in nieuw tabblad',
-    },
-    previewImage: {
-      de: 'Vorschaubild',
-      en: 'Preview Image',
-      es: 'Imagen de vista previa',
-      fr: 'Image de prévisualisation',
-      nl: 'Voorbeeldafbeelding',
-    },
-    reference: {
-      de: 'Referenz',
-      en: 'Reference',
-      es: 'Referencia',
-      fr: 'Référence',
-      nl: 'Referentie',
-    },
-    referenceRequired: {
-      de: 'Bitte wählen Sie eine Referenz aus',
-      en: 'Please select a reference',
-      es: 'Por favor seleccione una referencia',
-      fr: 'Veuillez sélectionner une référence',
-      nl: 'Selecteer een referentie',
-    },
-    title: {
-      de: 'Titel',
-      en: 'Title',
-      es: 'Título',
-      fr: 'Titre',
-      nl: 'Titel',
-    },
-    url: {
-      de: 'URL',
-      en: 'URL',
-      es: 'URL',
-      fr: 'URL',
-      nl: 'URL',
-    },
-    urlInvalid: {
-      de: 'URL muss mit https:// beginnen',
-      en: 'URL must start with https://',
-      es: 'La URL debe comenzar con https://',
-      fr: "L'URL doit commencer par https://",
-      nl: 'URL moet beginnen met https://',
-    },
-    urlRequired: {
-      de: 'Bitte geben Sie eine URL ein',
-      en: 'Please enter a URL',
-      es: 'Por favor ingrese una URL',
-      fr: 'Veuillez entrer une URL',
-      nl: 'Voer een URL in',
-    },
+    anchor: t('fields.anchor'),
+    child: t('fields.child'),
+    children: t('fields.children'),
+    childrenRequired: t('fields.childrenRequired'),
+    highlight: t('fields.highlight'),
+    icon: t('fields.icon'),
+    item: t('fields.item'),
+    itemFallback: t('fields.itemFallback'),
+    items: t('fields.items'),
+    label: t('fields.label'),
+    linkType: t('fields.linkType'),
+    linkTypeChildren: t('fields.linkTypeChildren'),
+    linkTypeExternal: t('fields.linkTypeExternal'),
+    linkTypeInternal: t('fields.linkTypeInternal'),
+    marginTop: t('fields.marginTop'),
+    openInNewTab: t('fields.openInNewTab'),
+    previewImage: t('fields.previewImage'),
+    reference: t('fields.reference'),
+    referenceRequired: t('fields.referenceRequired'),
+    title: t('fields.title'),
+    url: t('fields.url'),
+    urlInvalid: t('fields.urlInvalid'),
+    urlRequired: t('fields.urlRequired'),
   },
   groups: {
-    appearance: {
-      de: 'Darstellung',
-      en: 'Appearance',
-      es: 'Apariencia',
-      fr: 'Apparence',
-      nl: 'Weergave',
-    },
-    linkSettings: {
-      de: 'Link-Einstellungen',
-      en: 'Link Settings',
-      es: 'Configuración del enlace',
-      fr: 'Paramètres du lien',
-      nl: 'Link-instellingen',
-    },
+    appearance: t('groups.appearance'),
+    linkSettings: t('groups.linkSettings'),
   },
 } as const
